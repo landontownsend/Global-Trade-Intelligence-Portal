@@ -10,14 +10,10 @@ st.markdown("Analysis of trade flows from 1988 to 2021 | Built with Python & Str
 # 2. Load and Cache Data
 @st.cache_data
 def load_data():
-    #Parquet load
-    return pd.read_parquet('trade_data.parquet')
-
-df = load_data()
-    
-    df = df.dropna(subset=['TradeValue in 1000 USD'])
-    df['TradeValue_Billion'] = df['TradeValue in 1000 USD'] / 1000000
-    return df
+    data = pd.read_parquet('trade_data.parquet')
+    data = data.dropna(subset=['TradeValue in 1000 USD'])
+    data['TradeValue_Billion'] = data['TradeValue in 1000 USD'] / 1000000
+    return data
 
 df = load_data()
 
@@ -27,7 +23,7 @@ year_list = sorted(df['Year'].unique(), reverse=True)
 selected_year = st.sidebar.selectbox("Select Year", year_list)
 
 country_list = sorted(df['ReporterName'].unique())
-selected_country = st.sidebar.multiselect("Select Countries", country_list, default=["United States", "France", "Saudi Arabia"])
+selected_country = st.sidebar.multiselect("Select Countries", country_list, default=country_list[:3])
 
 # Filter the dataframe
 filtered_df = df[(df['Year'] == selected_year) & (df['ReporterName'].isin(selected_country))]
