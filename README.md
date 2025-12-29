@@ -19,3 +19,7 @@ A full-stack data analytics application that visualizes over 30 years of global 
 1. Clone the repository:
    ```bash
    git clone [https://github.com/landontownsend/Global-Trade-Intelligence-Portal.git](https://github.com/landontownsend/Global-Trade-Intelligence-Portal.git)
+
+   pip install -r requirements.txt
+
+   streamlit run app.py
