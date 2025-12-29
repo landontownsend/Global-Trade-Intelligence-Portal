@@ -16,7 +16,7 @@ A full-stack data analytics application that visualizes over 30 years of global 
 * **Interactive Analytics:** Users can drill down by specific years (1988-2021) and filter by reporting countries to view bilateral trade volumes.
 
 ## 📦 How to Run Locally
-1. Clone the repository:
+
    ```bash
    git clone [https://github.com/landontownsend/Global-Trade-Intelligence-Portal.git](https://github.com/landontownsend/Global-Trade-Intelligence-Portal.git)
 
