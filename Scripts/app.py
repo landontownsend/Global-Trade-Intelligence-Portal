@@ -10,7 +10,10 @@ st.markdown("Analysis of trade flows from 1988 to 2021 | Built with Python & Str
 # 2. Load and Cache Data
 @st.cache_data
 def load_data():
-    df = pd.read_csv('/Users/landon/Trade Data Py/trade_1988_2021.csv')
+    #Parquet load
+    return pd.read_parquet('trade_data.parquet')
+
+df = load_data()
     
     df = df.dropna(subset=['TradeValue in 1000 USD'])
     df['TradeValue_Billion'] = df['TradeValue in 1000 USD'] / 1000000
