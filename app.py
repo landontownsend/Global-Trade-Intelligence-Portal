@@ -2,16 +2,16 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# 1. Page Configuration (The "Aesthetic" part)
+# 1. Page Configuration
 st.set_page_config(page_title="Global Trade Intel", layout="wide")
 st.title("🌐 Global Trade Intelligence Portal")
 st.markdown("Analysis of trade flows from 1988 to 2021 | Built with Python & Streamlit")
 
-# 2. Load and Cache Data (Efficiency)
+# 2. Load and Cache Data 
 @st.cache_data
 def load_data():
     df = pd.read_csv('/Users/landon/Trade Data Py/trade_1988_2021.csv')
-    # Basic cleaning
+  
     df = df.dropna(subset=['TradeValue in 1000 USD'])
     df['TradeValue_Billion'] = df['TradeValue in 1000 USD'] / 1000000
     return df
@@ -29,7 +29,7 @@ selected_country = st.sidebar.multiselect("Select Countries", country_list, defa
 # Filter the dataframe
 filtered_df = df[(df['Year'] == selected_year) & (df['ReporterName'].isin(selected_country))]
 
-# 4. Top Level KPIs (Scorecards)
+# 4. Top Level KPIs 
 col1, col2, col3 = st.columns(3)
 total_val = filtered_df['TradeValue_Billion'].sum()
 avg_val = filtered_df['TradeValue_Billion'].mean()
